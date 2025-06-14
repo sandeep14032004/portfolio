@@ -21,7 +21,7 @@ const HeroText = () => {
         className="md:text-[2.8rem] lg:text-6xl sm:text-4xl text-orange font-bold uppercase"
       >
         Sandeep
-        <br className="sm:hidden md:block" />
+        <br className="md:block" />
         Pati
       </motion.h1>
       <motion.p
