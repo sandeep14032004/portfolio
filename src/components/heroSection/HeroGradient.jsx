@@ -1,10 +1,10 @@
 const HeroGradient = () => {
   return (
-    <div>
-      <div className="  shadow-cyanMediumShadow absolute top-0 right-[400px] -z-10 animate-pulse"></div>
-      <div className="  shadow-cyanMediumShadow absolute top-[5%] left-0 -z-10 opacity-50"></div>
-      <div className="  shadow-orangeMediumShadow absolute top-0 right-0 -z-10 animate-pulse"></div>
-      <div className="  shadow-orangeMediumShadow absolute top-[10%] left-0 -z-10 opacity-50 "></div>
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="shadow-electricBlueGlow absolute top-0 right-[400px] animate-pulse opacity-60" />
+      <div className="shadow-softBlueGlow absolute top-[10%] left-0 opacity-30" />
+      <div className="shadow-deepNavyGlow absolute top-0 right-0 opacity-40" />
+      <div className="shadow-softBlueGlow absolute bottom-[5%] left-[10%] opacity-25" />
     </div>
   );
 };

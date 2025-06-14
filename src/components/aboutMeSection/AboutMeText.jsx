@@ -2,27 +2,29 @@ import { Link } from "react-scroll";
 
 const AboutMeText = () => {
   return (
-    <div className="flex flex-col md:items-start sm:items-center md:text-left sm:text-center">
-      <h2 className="text-6xl text-cyan mb-10">About Me</h2>
-      <p>
-        I’m Abdelrahman, a web developer instructor with a passion for teaching
-        and coding. I specialize in React and front-end development, helping
-        students build real-world projects and master modern web technologies. I
-        also run a YouTube channel, CodeNest, where I create tutorials and
-        courses to guide aspiring developers in their journey toward successful
-        careers in tech. Outside of coding, I enjoy continuous learning and
-        sharing knowledge to inspire others to achieve their goals.
+    <div className="flex flex-col md:items-start items-center text-lightGrey md:text-left text-center">
+      <h2 className="text-5xl md:text-6xl font-bold text-cyan mb-8 tracking-wide">
+        About Me
+      </h2>
+      <p className="text-base md:text-lg leading-relaxed max-w-xl">
+        I’m Sandeep — a code craftsman with a knack for clean UIs and scalable
+        logic. My playground is the web, where I blend design, performance, and
+        functionality using React, Node.js, and MongoDB. Whether it’s building
+        task managers or full-stack platforms, I write code that tells a story.
+        Always curious, always building — because in tech, you're either
+        learning or lagging.
       </p>
-      <button className="border border-orange rounded-full py-2 px-4 text-lg flex gap-2 items-center mt-10 hover:bg-orange transition-all duration-500 cursor-pointer md:self-start sm:self-center">
+
+      <button className="border border-cyan rounded-full py-2 px-6 text-base font-semibold flex items-center gap-2 mt-10 hover:bg-cyan hover:text-darkBrown transition duration-300 md:self-start">
         <Link
+          to="projects"
           spy={true}
           smooth={true}
           duration={500}
           offset={-120}
-          to="projects"
-          className="cursor-pointer text-white hover:text-cyan transition-all duration-500"
+          className="cursor-pointer"
         >
-          My Projects
+          Explore Projects
         </Link>
       </button>
     </div>

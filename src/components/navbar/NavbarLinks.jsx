@@ -3,31 +3,35 @@ import { Link } from "react-scroll";
 const links = [
   { link: "About Me", section: "about" },
   { link: "Skills", section: "skills" },
-  { link: "Experience", section: "experience" },
   { link: "Projects", section: "projects" },
   { link: "Contact", section: "contact" },
 ];
 
 const NavbarLinks = () => {
   return (
-    <ul className="flex lg:flex-row sm:flex-col gap-6 text-white font-body lg:relative sm:absolute sm:top-[120%] text-center left-[50%] -translate-x-[50%] lg:text-md sm:text-xl sm:bg-cyan/30 backdrop-blur-lg lg:bg-black sm:w-full py-4">
-      {links.map((link, index) => {
-        return (
-          <li key={index} className="group">
-            <Link
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-130}
-              to={link.section}
-              className="cursor-pointer text-white hover:text-cyan transition-all duration-500"
-            >
-              {link.link}
-            </Link>
-            <div className="mx-auto bg-cyan w-0 group-hover:w-full h-[1px] transition-all duration-500"></div>
-          </li>
-        );
-      })}
+    <ul
+      className="flex lg:flex-row sm:flex-col gap-7 font-body 
+      lg:relative sm:absolute sm:top-[120%] left-1/2 -translate-x-1/2 
+      text-center lg:text-md sm:text-xl 
+      sm:bg-surface lg:bg-surface sm:w-full py-4 
+      sm:shadow-md sm:border-t border-accent rounded-b-2xl"
+    >
+      {links.map((link, index) => (
+        <li key={index} className="group transition-all duration-300">
+          <Link
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-130}
+            to={link.section}
+            className="cursor-pointer text-text hover:text-accent 
+              transition-colors duration-300"
+          >
+            {link.link}
+          </Link>
+          <div className="mx-auto mt-1 bg-accent w-0 group-hover:w-full h-[2px] transition-all duration-500"></div>
+        </li>
+      ))}
     </ul>
   );
 };

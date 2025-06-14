@@ -1,81 +1,75 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState("");
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleMessage = (e) => {
-    setMessage(e.target.value);
-  };
   const form = useRef();
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
+
     emailjs
-      .sendForm("service_ko3hmpt", "template_ahbmmqd", form.current, {
-        publicKey: "I6HAT5mUZH7WHabGE",
+      .sendForm(
+        "service_4vr74qm",
+        "template_9bqx3ut",
+        form.current,
+        "_JHPFVo25JZ0HeQKr"
+      )
+      .then(() => {
+        setSuccess("Message sent successfully ✅");
+        form.current.reset();
+        setTimeout(() => setSuccess(""), 4000);
+        setLoading(false);
       })
-      .then(
-        () => {
-          setEmail("");
-          setName("");
-          setMessage("");
-          setSuccess("Message Sent Succesfully");
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      );
+      .catch(() => {
+        setSuccess("❌ Failed to send. Try again.");
+        setTimeout(() => setSuccess(""), 4000);
+        setLoading(false);
+      });
   };
 
   return (
-    <div>
-      <p className="text-cyan">{success}</p>
-      <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
-        <input
-          type="text"
-          name="from_name"
-          placeholder="Your Name"
-          required
-          className="h-12 rounded-lg bg-lightBrown px-2"
-          value={name}
-          onChange={handleName}
-        />
-        <input
-          type="email"
-          name="from_email"
-          placeholder="Your Email"
-          required
-          className="h-12 rounded-lg bg-lightBrown px-2"
-          value={email}
-          onChange={handleEmail}
-        />
-        <textarea
-          type="text"
-          name="message"
-          rows="9"
-          cols="50"
-          placeholder="Message"
-          required
-          className=" rounded-lg bg-lightBrown p-2"
-          value={message}
-          onChange={handleMessage}
-        />
-        <button
-          type="submit"
-          className="w-full rounded-lg border border-cyan text-white h-12 font-bold text-xl hover:bg-darkCyan bg-cyan transition-all duration-500"
-        >
-          Send
-        </button>
-      </form>
-    </div>
+    <form
+      ref={form}
+      onSubmit={sendEmail}
+      className="flex flex-col gap-6 w-full"
+    >
+      <input
+        type="text"
+        name="user_name"
+        required
+        placeholder="Your Name"
+        className="h-12 rounded-lg bg-[#0f172a] text-white placeholder-gray-400 px-4 outline-none border border-cyan/40 focus:ring-2 focus:ring-cyan"
+      />
+      <input
+        type="email"
+        name="user_email"
+        required
+        placeholder="Your Email"
+        className="h-12 rounded-lg bg-[#0f172a] text-white placeholder-gray-400 px-4 outline-none border border-cyan/40 focus:ring-2 focus:ring-cyan"
+      />
+      <textarea
+        name="message"
+        rows="5"
+        required
+        placeholder="Your Message"
+        className="rounded-lg bg-[#0f172a] text-white placeholder-gray-400 px-4 py-3 outline-none resize-none border border-cyan/40 focus:ring-2 focus:ring-cyan"
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-cyan text-black font-semibold py-3 rounded-lg border border-cyan hover:bg-opacity-80 transition-all duration-300 disabled:opacity-50"
+      >
+        {loading ? "Sending..." : "Send Message"}
+      </button>
+      {success && (
+        <span className="text-green-400 font-medium text-sm transition-all duration-500">
+          {success}
+        </span>
+      )}
+    </form>
   );
 };
 
