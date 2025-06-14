@@ -14,5 +14,5 @@ const ContactMeRight = () => {
     </div>
   );
 };
-s;
+
 export default ContactMeRight;
